@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://unpkg.com/boxicons@2.1.3/css/boxicons.min.css" rel="stylesheet">
+    <title>5-Day Forecast</title>   
+</head>
+<body>
+
+    <div class="video-container">
+        <video src="./images/70796-538877060.mp4" playsinline muted autoplay loop></video>
+    </div>
+
+    <div class="header">
+        <a href="index.html" class="logo">My Weather</a>
+        <div class="container">
+            <form id="search-form" class="search-box">
+                <i class="bx bxs-map"></i>
+                <input type="text" name="city" placeholder="enter your location" required>
+                <button type="submit" class="bx bxs-search"></button>
+            </form>
+            
+            <p class="city-hide">city hide</p>
+    
+            <div class="weather-box">
+                <div class="box">
+                    <div class="info-weather">
+                        <div class="weather">
+                            <img src="./images/cloud.png">
+                            <p class="temperature">0<span>°C</span></p>
+                            <p class="description">Broken Clouds</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-details">
+                    <div class="humidity">
+                        <i class="bx bx-water"></i>
+                        <div class="text">
+                            <div class="info-humidity">
+                                <span>0%</span>
+                            </div>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+    
+                    <div class="wind">
+                        <i class="bx bx-wind"></i>
+                        <div class="text">
+                            <div class="info-wind">
+                                <span>0Km/h</span>
+                            </div>
+                            <p>Wind Speed</p>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+    
+            <div class="not-found">
+                <div class="box">
+                    <img src="./images/404.png">
+                    <p>OOpppPS!!! 404</p>
+                </div>
+            </div>
+        </div>
+        <button class="skip-btn">Skip</button>
+
+    </div>
+    <div class="choice">
+        <button class="choice-btn" id="today-btn">Today</button>
+        <button class="choice-btn" id="forecast-btn">5-day forecast</button>
+    </div>
+
+    <div class="containerFDTash">
+        <div class="FDinfo">
+            <h1 class="FDcity">Tashkent</h1>
+            <h2 class="FDcurrent-time">Current Time: <span id="FDcurrent-time"></span></h2>
+        </div>
+        <div class="FDweather-boxTash">
+            <div class="FDboxTash">
+                <div class="FDinfo-weatherTash">
+                    <div class="FDweatherTash">
+                        <img src="./images/cloud.png">
+                        <p class="FDtemperatureTash">0<span>°C</span></p>
+                        <p class="FDdescriptionTash">Broken Clouds</p>
+                    </div>
+                </div>
+            </div>
+            <div class="FDweather-detailsTash">
+                <div class="FDhumidityTash">
+                    <i class="bx bx-water"></i>
+                    <div class="FDtextTash">
+                        <div class="FDinfo-humidityTash">
+                            <span>0%</span>
+                        </div>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+    
+                <div class="FDwindTash">
+                    <i class="bx bx-wind"></i>
+                    <div class="FDtextTash">
+                        <div class="FDinfo-windTash">
+                            <span>0Km/h</span>
+                        </div>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+
+
+    </div>
+    <div class="forecast">
+        <div class="forecast-container"></div>
+    </div>
+
+    <div class="choices">
+        <h3>Five-day forecast by the clock</h3>
+        <select id="day"></select>
+    </div>
+    
+    <div class="hourly-container">
+        <div class="hourly-weather"></div>
+    </div>
+
+    <div class="footer">
+        <a href="index.html" class="logo">My Weather</a>
+        <p>© ASLAN KAMALOV</p>
+    </div>
+
+    <script defer src="./tashFD.js"></script>
+
+</body>
+</html>
+

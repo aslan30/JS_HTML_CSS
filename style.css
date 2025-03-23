@@ -1,0 +1,775 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    background: url(./images/beach-2328966_1280.jpg);
+    background-size: cover;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.video-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 11rem;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    background-size: cover;
+    background-position: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 3rem;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.logo:hover {
+    transform: scale(1.2);
+}
+
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 40rem;
+    height: 7rem;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 16px;
+    padding: 2rem;
+    color: #fff;
+    transition: height .6s ease;
+    margin: 2rem auto;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    height: 3.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    font-size: 2.8rem;
+}
+
+.search-box input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    outline: none;
+    border-radius: 10px;
+    font-size: 2.2rem;
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0 4.8rem 0 4.2rem;
+}
+
+.search-box input::placeholder {
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.search-box button {
+    position: absolute;
+    right: 0;
+    width: 4rem;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 2.8rem;
+    color: #fff;
+    padding: 0 4rem 0 0.5rem;
+    cursor: pointer;
+}
+
+.skip-btn {
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    padding: 0.5rem 0.5rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.skip-btn:hover {
+    background-color: rgba(255, 255, 255, .2);
+}
+
+.weather-box {
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.weather-box,
+.weather-details,
+.not-found {
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.weather-box.active,
+.weather-details.active,
+.not-found.active {
+    visibility: visible;
+}
+
+.weather-box .box,
+.not-found .box {
+    transform: translateY(-100%);
+}
+
+.weather-box.active .box,
+.not-found.active .box {
+    transform: translateY(0%);
+    transition: transform 1s ease;
+    transition-delay: .6s;
+}
+
+.weather-box .box .info-weather {
+    transform: translateY(-120%);
+}
+
+.container.active .weather-box .box .info-weather,
+.container.active .weather-details .humidity .info-humidity,
+.container.active .weather-details .wind .info-wind {
+    transform: translateY(0%);
+    transition: transform 1s ease;
+}
+
+.weather-box img {
+    width: 60%;
+}
+
+.weather-box .temperature {
+    position: relative;
+    font-size: 6.4rem;
+    line-height: 1;
+    font-weight: 700;
+    margin: 2rem 0 0.6rem -3rem;
+}
+
+.weather-box .temperature span {
+    position: relative;
+    font-size: 2.4rem;
+    margin-left: 0.4rem;
+}
+
+.weather-box .description {
+    font-size: 2.2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.weather-details {
+    position: absolute;
+    bottom: 4rem;
+    left: 0;
+    width: 100%;
+    padding: 0 2rem;
+    display: flex;
+}
+
+.weather-details .humidity,
+.weather-details .wind {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    transform: translateY(-100%)
+}
+
+.weather-details .humidity .info-humidity,
+.weather-details .wind .info-wind {
+    transform: translateY(-100%);
+    overflow: hidden;
+}
+
+.weather-details.active .humidity,
+.weather-details.active .wind {
+    transform: translateY(0%);
+    transition: transform 1s ease;
+    transition-delay: 1.2s;
+}
+
+.weather-details .humidity {
+    padding-left: 2rem;
+    justify-content: flex-start;
+}
+
+.weather-details .wind {
+    padding-right: 2rem;
+    justify-content: flex-end;
+}
+
+.weather-details i {
+    font-size: 3.3rem;
+    margin-right: 1rem;
+}
+
+.weather-details span {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.weather-details p {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.not-found {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 11rem;
+}
+
+.not-found img {
+    width: 65%;
+}
+
+.not-found p {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-top: 1.2rem;
+}
+
+.city-hide {
+    display: none;
+}
+
+#clone-info-weather,
+#clone-info-humidity,
+#clone-info-wind {
+    position: absolute;
+    transform: translateY(-100%);
+}
+
+#clone-info-weather .weather {
+    transform: translateY(120%);
+    transition: transform 1s ease, opacity 0s;
+    transition-delay: 0s, 2s;
+}
+
+.weather-box:not(.active)#clone-info-weather .weather {
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+.active-clone#clone-info-weather .weather {
+    transform: translateY(0%);
+}
+
+#clone-info-humidity span,
+#clone-info-wind span {
+    transform: translateY(100%);
+    transition: transform 1s ease;
+}
+
+.active-clone#clone-info-humidity span,
+.active-clone#clone-info-wind span {
+    transform: translateY(0%);
+}
+
+.choice {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 8vh;
+    background: rgba(3, 14, 14, 0.54);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.choice-btn {
+    background: rgba(250, 255, 255, 0.1);
+    margin: 0 1rem;
+    padding: 1.2rem 2rem;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: 1 1 auto;
+    max-width: 20rem;
+    text-align: center;
+}
+
+.choice-btn:hover {
+    background: rgba(250, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.containerTash {
+    margin: 0.8rem auto;
+    position: relative;
+    width: 90%;
+    max-width: 50rem;
+    height: auto;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 16px;
+    padding: 2rem;
+    color: #fff;
+}
+
+.info {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.info h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.info h2 {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.weather-boxTash {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.weather-boxTash img {
+    width: 20%;
+}
+
+.weather-boxTash .temperatureTash {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2rem 0 0.6rem;
+}
+
+.weather-boxTash .temperatureTash span {
+    font-size: 1.4rem;
+    margin-left: 0.4rem;
+}
+
+.weather-boxTash .descriptionTash {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+}
+
+.weather-detailsTash {
+    display: flex;
+    justify-content: space-around;
+}
+
+.weather-detailsTash .humidityTash,
+.weather-detailsTash .windTash {
+    display: flex;
+    align-items: center;
+}
+
+.weather-detailsTash i {
+    font-size: 4.6rem;
+    margin-right: 1rem;
+}
+
+.weather-detailsTash span {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.weather-detailsTash p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-top: 0.4rem;
+}
+
+.containerFDTash {
+    margin: 0.8rem auto;
+    position: relative;
+    width: 90%;
+    max-width: 50rem;
+    height: auto;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 16px;
+    padding: 2rem;
+    color: #fff;
+}
+
+.FDinfo {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.FDinfo h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.FDinfo h2 {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.FDweather-boxTash {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.FDweather-boxTash img {
+    width: 20%;
+}
+
+.FDweather-boxTash .FDtemperatureTash {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2rem 0 0.6rem;
+}
+
+.FDweather-boxTash .FDtemperatureTash span {
+    font-size: 1.4rem;
+    margin-left: 0.4rem;
+}
+
+.FDweather-boxTash .FDdescriptionTash {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+}
+
+.FDweather-detailsTash {
+    display: flex;
+    justify-content: space-around;
+}
+
+.FDweather-detailsTash .FDhumidityTash,
+.FDweather-detailsTash .FDwindTash {
+    display: flex;
+    align-items: center;
+}
+
+.FDweather-detailsTash i {
+    font-size: 4.6rem;
+    margin-right: 1rem;
+}
+
+.FDweather-detailsTash span {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.FDweather-detailsTash p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-top: 0.4rem;
+}
+
+.forecast {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.forecast h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fff;
+    width: 100%;
+    background: rgba(14, 14, 14, 0.449);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, .2);
+}
+
+.forecast-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.forecast-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 16px;
+    flex: 1 1 calc(25% - 2rem);
+    max-width: calc(25% - 2rem);
+}
+
+.forecast-item img {
+    width: 20%;
+}
+
+.forecast-item .FDtemperatureTash {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    color: #fff;
+}
+
+.forecast-item .FDdescriptionTash {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.hourly-weather {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+.hourly-weather-item {
+    width: 17rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+
+.hourly-weather-item img {
+    width: 40%;
+}
+
+.choices {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 8vh;
+    background: rgba(3, 14, 14, 0.54);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.choices h3 {
+    color: #ffffff;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+#day {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#day option {
+    background-color: rgba(3, 14, 14, 0.54);
+}
+
+#day:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#day:focus {
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.footer {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 11rem;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .weather-box .temperature {
+        font-size: 5rem;
+    }
+
+    .weather-box .description {
+        font-size: 1.8rem;
+    }
+
+    .weather-details {
+        flex-direction: column;
+        align-items: center;
+        bottom: 2rem;
+    }
+
+    .weather-details .humidity,
+    .weather-details .wind {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 0;
+    }
+
+    .forecast-item {
+        width: 100%;
+        max-width: none;
+    }
+
+    .hourly-weather-item {
+        width: 100%;
+        max-width: none;
+    }
+
+    .choices {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #day {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .weather-box .temperature {
+        font-size: 4rem;
+    }
+
+    .weather-box .description {
+        font-size: 1.6rem;
+    }
+
+    .weather-details i {
+        font-size: 2.8rem;
+    }
+
+    .weather-details span {
+        font-size: 1.2rem;
+    }
+
+    .weather-details p {
+        font-size: 1rem;
+    }
+
+    .forecast h2 {
+        font-size: 1.6rem;
+    }
+
+    .forecast-item .FDtemperatureTash {
+        font-size: 1.6rem;
+    }
+
+    .forecast-item .FDdescriptionTash {
+        font-size: 1.4rem;
+    }
+
+    .hourly-weather-item {
+        padding: 0.5rem;
+    }
+
+    .hourly-weather-item img {
+        width: 30%;
+    }
+
+    .hourly-weather-item h3 {
+        font-size: 1.4rem;
+    }
+
+    .hourly-weather-item .temperatureTash {
+        font-size: 1.4rem;
+    }
+
+    .hourly-weather-item .descriptionTash {
+        font-size: 1.2rem;
+    }
+}
